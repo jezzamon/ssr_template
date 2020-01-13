@@ -7039,6 +7039,11 @@ var React = __webpack_require__(15);
 var renderToString = __webpack_require__(111).renderToString;
 var Home = __webpack_require__(122).default;
 
+// import express from 'express';
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
+
+
 var app = express();
 
 app.get('/', function (req, res) {
@@ -22778,7 +22783,7 @@ var Home = function Home() {
   return _react2.default.createElement(
     'div',
     null,
-    'I\'m the home compoooonent'
+    'I\'m the hoooooome compoooonent'
   );
 };
 
