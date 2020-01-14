@@ -231,9 +231,9 @@ app.get('*', function (req, res) {
     return route.loadData ? route.loadData(store) : null;
   });
 
-  console.log(promises);
-
-  res.send((0, _renderer2.default)(req, store));
+  Promise.all(promises).then(function () {
+    res.send((0, _renderer2.default)(req, store));
+  });
 });
 app.listen(3000, function () {
   console.log('listening to port 3000');
@@ -370,6 +370,8 @@ function mapStateToProps(state) {
 }
 
 function loadData(store) {
+  // from server side, no access to redux connect or provider,
+  // using the store that was instantiated server side in index.js and passed to loadData
   return store.dispatch((0, _actions.fetchUsers)());
 }
 

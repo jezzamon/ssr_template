@@ -30,6 +30,8 @@ function mapStateToProps(state) {
 }
 
 function loadData(store) {
+  // from server side, no access to redux connect or provider,
+  // using the store that was instantiated server side in index.js and passed to loadData
   return store.dispatch(fetchUsers());
 }
 
