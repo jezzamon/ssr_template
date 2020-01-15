@@ -1,12 +1,12 @@
 import React from 'react';
 // import { Route } from 'react-router-dom';  // no longer using this for ssr
-import Home from './components/Home';
-import UsersList, { loadData } from './components/UsersList';
+import HomePage from './pages/HomePage';
+import UsersListPage from './pages/UsersListPage';
 
 // export default () => {
 //   return (
 //     <div>
-//       <Route exact path="/" component={Home} />
+//       <Route exact path="/" component={HomePage} />
 //       <Route path="/users" component={UsersList} />
 //     </div>
 //   );
@@ -16,13 +16,12 @@ import UsersList, { loadData } from './components/UsersList';
 
 export default [
   {
+    ...HomePage,
     path: '/',
-    component: Home,
     exact: true,
   },
   {
+    ...UsersListPage,
     path: '/users',
-    component: UsersList,
-    loadData,
   },
 ];
