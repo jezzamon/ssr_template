@@ -13,14 +13,14 @@ app.use(
   proxy('http://react-ssr-api.herokuapp.com', {
     //just for purposes of ssr-api and udemy course
     proxyReqOptDecorator(opts) {
-      opts.header['x-forward-host'] = 'localhost:3000';
+      opts.headers['x-forward-host'] = 'localhost:3000';
       return opts;
     },
   })
 );
 app.use(express.static('public'));
 app.get('*', (req, res) => {
-  const store = createStore();
+  const store = createStore(req);
 
   // some logic to init and load data into the store
   const promises = matchRoutes(Routes, req.path).map(({ route }) => {
