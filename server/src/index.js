@@ -13,13 +13,14 @@ app.use(
   proxy('http://react-ssr-api.herokuapp.com', {
     //just for purposes of ssr-api and udemy course
     proxyReqOptDecorator(opts) {
-      opts.headers['x-forward-host'] = 'localhost:3000';
+      opts.headers['x-forwarded-host'] = 'localhost:3000';
       return opts;
     },
   })
 );
 app.use(express.static('public'));
 app.get('*', (req, res) => {
+  // custom createStore wrapper which will add the req.cookie in headers
   const store = createStore(req);
 
   // some logic to init and load data into the store
