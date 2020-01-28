@@ -3,6 +3,8 @@ import App from './App';
 // import { Route } from 'react-router-dom';  // no longer using this for ssr
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
+import NotFoundPage from './pages/NotFoundPage';
+import AdminsListPage from './pages/AdminsListPage';
 
 // export default () => {
 //   return (
@@ -25,8 +27,15 @@ export default [
         exact: true,
       },
       {
+        ...AdminsListPage,
+        path: '/admins',
+      },
+      {
         ...UsersListPage,
         path: '/users',
+      },
+      {
+        ...NotFoundPage,
       },
     ],
   },
